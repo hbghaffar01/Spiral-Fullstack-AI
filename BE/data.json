@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "AI Analytics Dashboard",
+    "description": "Real-time analytics dashboard for product and growth teams with LLM-powered summaries.",
+    "category": "product",
+    "tags": ["dashboard", "analytics", "ai"],
+    "content": "This dashboard ingests product usage data and surfaces features driving retention using LLM-based insight generation."
+  },
+  {
+    "id": 2,
+    "title": "Lead Qualification Agent",
+    "description": "Autonomous agent that reads inbound leads and qualifies them before they reach sales.",
+    "category": "agent",
+    "tags": ["agent", "sales", "scoring"],
+    "content": "The agent connects to CRM and email inboxes, enriches leads with external data, and routes high-intent leads to the right representative."
+  },
+  {
+    "id": 3,
+    "title": "Vector Search Service",
+    "description": "Thin API on top of a vector DB (Pinecone / Qdrant) for semantic search workloads.",
+    "category": "search",
+    "tags": ["vector", "pinecone", "qdrant"],
+    "content": "The service ingests documents, builds embeddings, and exposes a retrieval API tuned for latency and recall."
+  },
+  {
+    "id": 4,
+    "title": "Marketing Experiment Studio",
+    "description": "Landing page generator that runs multivariate experiments with AI-written copy.",
+    "category": "marketing",
+    "tags": ["landing-page", "experiments", "copy"],
+    "content": "Marketers can spin up pages, push them to production, and get auto-generated experiment reports using LLMs."
+  },
+  {
+    "id": 5,
+    "title": "Support Knowledge Search",
+    "description": "Unified search across tickets, docs, and internal notes backed by a vector index.",
+    "category": "support",
+    "tags": ["support", "search", "retrieval"],
+    "content": "Support agents can search by intent instead of keywords, powered by embeddings and a vector database."
+  }
+]
