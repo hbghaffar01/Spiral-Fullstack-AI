@@ -11,5 +11,4 @@ export const SEARCH_CATEGORIES: Category[] = [
 
 export const UI_CONFIG = {
   debounceDelay: 250,
-  maxResults: 10,
 } as const;

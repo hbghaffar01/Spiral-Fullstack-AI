@@ -17,13 +17,17 @@ app.use(
   cors({
     origin: CLIENT_URL,
     credentials: true,
-  })
+  }),
 );
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
-  customCss: '.swagger-ui .topbar { display: none }',
-  customSiteTitle: "Spiralyze AI API Docs",
-}));
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, {
+    customCss: ".swagger-ui .topbar { display: none }",
+    customSiteTitle: "Spiralyze AI API Docs",
+  }),
+);
 
 app.get("/api-docs.json", (_req, res) => {
   res.setHeader("Content-Type", "application/json");
@@ -151,9 +155,9 @@ app.post("/api/scrape", validateContentType("application/json"), scraperControll
  *                   format: date-time
  */
 app.get("/health", (_req, res) => {
-  res.json({ 
-    status: "healthy", 
-    timestamp: new Date().toISOString()
+  res.json({
+    status: "healthy",
+    timestamp: new Date().toISOString(),
   });
 });
 
@@ -163,7 +167,7 @@ app.use(errorHandler);
 async function startServer() {
   try {
     await initVectorDB();
-    
+
     app.listen(PORT, () => {
       console.log(`
 🚀 Server: http://localhost:${PORT}

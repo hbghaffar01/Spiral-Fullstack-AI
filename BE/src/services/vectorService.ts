@@ -35,9 +35,8 @@ class VectorService {
   private async deleteExistingCollection(client: ChromaClient): Promise<void> {
     try {
       await client.deleteCollection({ name: "products" });
-    } catch(error) {
-      console.log("Error deleting existing collection:", error);
-      
+    } catch {
+      console.log("Collection doesn't exist, which is fine");
     }
   }
 
@@ -45,14 +44,10 @@ class VectorService {
     if (!this.collection) return;
 
     const items = data as Item[];
-    
-    const documents = items.map((item) =>
-      this.createDocument(item)
-    );
 
-    const metadatas = items.map((item) =>
-      this.createMetadata(item)
-    );
+    const documents = items.map((item) => this.createDocument(item));
+
+    const metadatas = items.map((item) => this.createMetadata(item));
 
     const ids = items.map((item) => item.id.toString());
 
@@ -64,13 +59,7 @@ class VectorService {
   }
 
   private createDocument(item: Item): string {
-    return [
-      item.title,
-      item.description,
-      item.content,
-      ...item.tags,
-      item.category,
-    ].join(" ");
+    return [item.title, item.description, item.content, ...item.tags, item.category].join(" ");
   }
 
   private createMetadata(item: Item): Record<string, any> {
@@ -127,9 +116,6 @@ export async function initVectorDB(): Promise<boolean> {
   return vectorService.initialize();
 }
 
-export async function vectorSearch(
-  query: string,
-  category?: string
-): Promise<Item[] | null> {
+export async function vectorSearch(query: string, category?: string): Promise<Item[] | null> {
   return vectorService.search(query, category);
 }

@@ -13,7 +13,6 @@ export function SearchUI() {
     results,
     isLoading,
     error,
-    hasResults,
     showNoResults,
   } = useSearch({ debounceDelay: UI_CONFIG.debounceDelay });
 

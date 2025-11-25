@@ -34,12 +34,6 @@ export function useScraper() {
     }
   }, [url]);
 
-  const reset = useCallback(() => {
-    setUrl("");
-    setError(null);
-    setResult(null);
-  }, []);
-
   return {
     url,
     setUrl,
@@ -47,7 +41,5 @@ export function useScraper() {
     error,
     result,
     scrape,
-    reset,
-    hasResult: !!result,
   };
 }

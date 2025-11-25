@@ -63,13 +63,6 @@ export function useSearch({ debounceDelay = 250 }: UseSearchOptions = {}) {
     return () => cleanup?.();
   }, [debouncedQuery, category, search]);
 
-  const reset = useCallback(() => {
-    setQuery("");
-    setCategory("");
-    setResults([]);
-    setError(null);
-  }, []);
-
   return {
     query,
     setQuery,
@@ -78,8 +71,6 @@ export function useSearch({ debounceDelay = 250 }: UseSearchOptions = {}) {
     results,
     isLoading,
     error,
-    reset,
-    hasResults: results.length > 0,
     showNoResults: (query.trim() || category) && !isLoading && !error && !results.length,
   };
 }

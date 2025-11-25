@@ -27,9 +27,7 @@ export class SearchService {
     let items = [...this.data];
 
     if (category) {
-      items = items.filter(
-        (item) => this.normalize(item.category) === category
-      );
+      items = items.filter((item) => this.normalize(item.category) === category);
     }
 
     if (!query) {
@@ -37,7 +35,7 @@ export class SearchService {
     }
 
     const tokens = this.tokenize(query);
-    
+
     const scoredItems = items
       .map((item) => ({
         item,
@@ -55,14 +53,12 @@ export class SearchService {
   }
 
   private tokenize(text: string): string[] {
-    return this.normalize(text)
-      .split(/\s+/)
-      .filter(Boolean);
+    return this.normalize(text).split(/\s+/).filter(Boolean);
   }
 
   private calculateScore(item: Item, tokens: string[]): number {
     const searchableText = this.normalize(
-      [item.title, item.description, item.content, item.category, ...item.tags].join(" ")
+      [item.title, item.description, item.content, item.category, ...item.tags].join(" "),
     );
 
     return tokens.reduce((score, token) => {

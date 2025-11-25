@@ -45,10 +45,7 @@ export class ScraperService {
     });
 
     if (response.status < 200 || response.status >= 300) {
-      throw new HttpError(
-        `Upstream responded with status ${response.status}`,
-        502
-      );
+      throw new HttpError(`Upstream responded with status ${response.status}`, 502);
     }
 
     const contentType = String(response.headers["content-type"] || "").toLowerCase();
@@ -100,7 +97,7 @@ export class ScraperService {
     }
 
     const axiosError = error as AxiosError;
-    
+
     if (axiosError.code === "ECONNABORTED") {
       return new HttpError("Request to target URL timed out", 504);
     }
@@ -111,14 +108,20 @@ export class ScraperService {
 }
 
 export class ValidationError extends Error {
-  constructor(message: string, public statusCode: number) {
+  constructor(
+    message: string,
+    public statusCode: number,
+  ) {
     super(message);
     this.name = "ValidationError";
   }
 }
 
 export class HttpError extends Error {
-  constructor(message: string, public statusCode: number) {
+  constructor(
+    message: string,
+    public statusCode: number,
+  ) {
     super(message);
     this.name = "HttpError";
   }

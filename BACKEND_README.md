@@ -1,12 +1,14 @@
 # Backend - Full-Stack Search & Scraper API
 
 ## Features
+
 - **Hybrid Search**: Vector embeddings (ChromaDB) + keyword search fallback
 - **Web Scraping**: Extract metadata with timeout protection
 - **Docker Support**: Complete containerized setup
 - **Swagger Documentation**: Interactive API docs
 
 ## Tech Stack
+
 - TypeScript + Express.js
 - ChromaDB (vector database - optional)
 - OpenAI embeddings (optional)
@@ -16,6 +18,7 @@
 ## Quick Start
 
 ### Option 1: Basic Mode (Keyword Search Only)
+
 ```bash
 npm install
 npm run dev
@@ -24,6 +27,7 @@ npm run dev
 Server will start at http://localhost:4000
 
 ### Option 2: With ChromaDB (Vector Search)
+
 ```bash
 # Start ChromaDB + Backend with Docker
 npm run docker:up
@@ -35,17 +39,20 @@ npm run docker:down
 ## API Endpoints
 
 ### Core APIs
+
 - `GET /api/search?q=<query>&category=<filter>` - Search products
 - `POST /api/scrape` - Scrape webpage metadata
 - `GET /health` - Health check
 
 ### Documentation
+
 - `GET /api-docs` - Interactive Swagger UI
 - `GET /api-docs.json` - OpenAPI specification
 
 ## NPM Scripts
 
 ### Development
+
 ```bash
 npm run dev          # Start with ts-node-dev
 npm run build        # Compile TypeScript
@@ -53,6 +60,7 @@ npm start            # Run production build
 ```
 
 ### Docker
+
 ```bash
 npm run docker:build # Build Docker images
 npm run docker:up    # Start Backend + ChromaDB
@@ -60,6 +68,7 @@ npm run docker:down  # Stop all services
 ```
 
 ### Code Quality
+
 ```bash
 npm run format       # Format code with Prettier
 npm run typecheck    # Type checking with TypeScript
@@ -107,21 +116,25 @@ Test all endpoints directly from your browser!
 ### 1. Search API (Task A)
 
 **Basic search:**
+
 ```bash
 curl --location 'http://localhost:4000/api/search?q=AI%20dashboard'
 ```
 
 **Search with category filter:**
+
 ```bash
 curl --location 'http://localhost:4000/api/search?q=agent&category=agent'
 ```
 
 **Category only:**
+
 ```bash
 curl --location 'http://localhost:4000/api/search?category=product'
 ```
 
 **All categories:**
+
 ```bash
 curl --location 'http://localhost:4000/api/search?q=vector'
 ```
@@ -131,6 +144,7 @@ curl --location 'http://localhost:4000/api/search?q=vector'
 ### 2. Scraper API (Task B)
 
 **Scrape example.com:**
+
 ```bash
 curl --location 'http://localhost:4000/api/scrape' \
 --header 'Content-Type: application/json' \
@@ -140,6 +154,7 @@ curl --location 'http://localhost:4000/api/scrape' \
 ```
 
 **Scrape Google:**
+
 ```bash
 curl --location 'http://localhost:4000/api/scrape' \
 --header 'Content-Type: application/json' \
@@ -149,6 +164,7 @@ curl --location 'http://localhost:4000/api/scrape' \
 ```
 
 **Scrape GitHub:**
+
 ```bash
 curl --location 'http://localhost:4000/api/scrape' \
 --header 'Content-Type: application/json' \
@@ -170,6 +186,7 @@ curl --location 'http://localhost:4000/health'
 ### 4. OpenAPI Specification
 
 **Get Swagger JSON:**
+
 ```bash
 curl --location 'http://localhost:4000/api-docs.json'
 ```
